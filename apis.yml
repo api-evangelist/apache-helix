@@ -1,0 +1,34 @@
+aid: apache-helix
+name: Apache Helix
+description: >-
+  Apache Helix is a generic cluster management framework for partitioned and replicated distributed resources. It automates partition management, replication, fault tolerance, and cluster expansion for distributed systems.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Cluster Management
+  - Distributed Systems
+  - Partitioning
+  - Replication
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-helix/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-helix:apache-helix
+    name: Apache Helix
+    description: >-
+      Helix provides a Java API for cluster, resource, and partition management with spectator, participant, and controller role APIs, a REST API for cluster administration, and a task framework for distributed task scheduling.
+    humanURL: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+    tags:
+      - Java
+      - REST
+      - Cluster Management
+    properties:
+      - type: Documentation
+        url: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
