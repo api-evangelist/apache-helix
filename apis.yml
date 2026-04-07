@@ -23,9 +23,9 @@ apis:
       Helix provides a Java API for cluster, resource, and partition management with spectator, participant, and controller role APIs, a REST API for cluster administration, and a task framework for distributed task scheduling.
     humanURL: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
     tags:
+      - Cluster Management
       - Java
       - REST
-      - Cluster Management
     properties:
       - type: Documentation
         url: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
