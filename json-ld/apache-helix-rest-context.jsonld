@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "helix": "https://helix.apache.org/vocab#",
+    "id": "schema:identifier",
+    "controller": "helix:controller",
+    "paused": "helix:paused",
+    "disabledInstances": "helix:disabledInstances",
+    "liveInstances": "helix:liveInstances",
+    "hostName": "schema:hostName",
+    "port": "schema:portNumber",
+    "enabled": "helix:enabled",
+    "tags": "schema:keywords",
+    "stateModelDefRef": "helix:stateModelDefRef",
+    "numPartitions": "helix:numPartitions",
+    "replicas": "helix:replicas",
+    "rebalanceMode": "helix:rebalanceMode",
+    "instanceStateMap": "helix:instanceStateMap",
+    "mapFields": "helix:mapFields",
+    "name": "schema:name"
+  }
+}

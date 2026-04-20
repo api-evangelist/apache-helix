@@ -1,0 +1,7 @@
+{
+  "id": "my-resource",
+  "stateModelDefRef": "MasterSlave",
+  "numPartitions": 16,
+  "replicas": "3",
+  "rebalanceMode": "FULL_AUTO"
+}

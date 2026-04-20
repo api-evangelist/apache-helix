@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-helix/json-schema/helix-rest-idealstate-schema.json",
+  "title": "IdealState",
+  "type": "object",
+  "description": "Desired ideal state for resource partition placement",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Resource name",
+      "example": "my-resource"
+    },
+    "stateModelDefRef": {
+      "type": "string",
+      "description": "State model reference",
+      "example": "MasterSlave"
+    },
+    "mapFields": {
+      "type": "object",
+      "description": "Map of partition to desired instance state map"
+    }
+  }
+}

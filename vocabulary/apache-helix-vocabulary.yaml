@@ -1,0 +1,51 @@
+name: Apache Helix Vocabulary
+description: Unified taxonomy for Apache Helix REST API resources, actions, workflows, and personas
+version: "1.0.0"
+
+resources:
+  - name: Cluster
+    description: Helix cluster grouping instances and resources under a controller
+    openapi: "#/components/schemas/Cluster"
+    capability: helix-rest
+  - name: Instance
+    description: Participant node in a Helix cluster
+    openapi: "#/components/schemas/Instance"
+    capability: helix-rest
+  - name: Resource
+    description: Distributed partitioned data or service managed by Helix
+    openapi: "#/components/schemas/Resource"
+    capability: helix-rest
+  - name: ExternalView
+    description: Current observed partition state assignments across instances
+    openapi: "#/components/schemas/ExternalView"
+    capability: helix-rest
+  - name: IdealState
+    description: Desired partition placement plan computed by the rebalancer
+    openapi: "#/components/schemas/IdealState"
+    capability: helix-rest
+
+actions:
+  - name: List
+    description: List clusters, instances, or resources
+    operationId: listClusters
+  - name: Get
+    description: Retrieve cluster, instance, or resource details
+    operationId: getCluster
+  - name: Create
+    description: Create a new cluster or resource
+    operationId: createCluster
+  - name: Delete
+    description: Delete a cluster or resource
+    operationId: deleteCluster
+  - name: Inspect State
+    description: View external view or ideal state for a resource
+    operationId: getExternalView
+
+workflows:
+  - name: Apache Helix Cluster Management
+    description: Manage distributed cluster resources and partition state in Apache Helix
+    capability: helix-cluster-management.yaml
+
+personas:
+  - name: Platform Engineer
+    description: Engineer responsible for operating and maintaining distributed system clusters using Helix

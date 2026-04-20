@@ -1,0 +1,7 @@
+{
+  "id": "my-resource_0",
+  "instanceStateMap": {
+    "localhost_12913": "MASTER",
+    "localhost_12914": "SLAVE"
+  }
+}

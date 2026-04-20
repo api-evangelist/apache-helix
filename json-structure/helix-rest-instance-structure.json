@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/apache-helix/json-structure/helix-rest-instance-structure.json",
+  "title": "Instance",
+  "type": "object",
+  "properties": {
+    "id": "string",
+    "hostName": "string",
+    "port": "int32",
+    "enabled": "boolean",
+    "tags": "array"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "my-cluster",
+  "controller": "controller_host_12345",
+  "paused": false,
+  "disabledInstances": [],
+  "liveInstances": []
+}

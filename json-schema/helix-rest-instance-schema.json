@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-helix/json-schema/helix-rest-instance-schema.json",
+  "title": "Instance",
+  "type": "object",
+  "description": "Helix cluster instance (participant) configuration",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Instance name",
+      "example": "localhost_12913"
+    },
+    "hostName": {
+      "type": "string",
+      "description": "Hostname of the instance",
+      "example": "localhost"
+    },
+    "port": {
+      "type": "integer",
+      "description": "Port number",
+      "example": 12913
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the instance is enabled",
+      "example": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Instance tags"
+    }
+  }
+}

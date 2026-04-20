@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-helix/json-schema/helix-rest-cluster-schema.json",
+  "title": "Cluster",
+  "type": "object",
+  "description": "Helix cluster configuration and state",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Cluster name",
+      "example": "my-cluster"
+    },
+    "controller": {
+      "type": "string",
+      "description": "Active controller node",
+      "example": "controller_host_12345"
+    },
+    "paused": {
+      "type": "boolean",
+      "description": "Whether the cluster is paused",
+      "example": false
+    },
+    "disabledInstances": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of disabled instances"
+    },
+    "liveInstances": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of live instances"
+    }
+  }
+}

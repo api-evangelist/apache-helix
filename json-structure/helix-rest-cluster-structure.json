@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/apache-helix/json-structure/helix-rest-cluster-structure.json",
+  "title": "Cluster",
+  "type": "object",
+  "properties": {
+    "id": "string",
+    "controller": "string",
+    "paused": "boolean",
+    "disabledInstances": "array",
+    "liveInstances": "array"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-helix/json-schema/helix-rest-partition-schema.json",
+  "title": "Partition",
+  "type": "object",
+  "description": "Helix partition state assignment across instances",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Partition name",
+      "example": "my-resource_0"
+    },
+    "instanceStateMap": {
+      "type": "object",
+      "description": "Map of instance to state",
+      "example": {
+        "localhost_12913": "MASTER",
+        "localhost_12914": "SLAVE"
+      }
+    }
+  }
+}
