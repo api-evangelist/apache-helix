@@ -38,7 +38,7 @@ apis:
         url: openapi/apache-helix-rest-openapi.yml
       - type: JSONSchema
         url: json-schema/helix-rest-cluster-schema.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/apache-helix-rest-context.jsonld
 
   - aid: apache-helix:apache-helix-java-api
