@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Helix REST API — Instances
+  description: 'Apache Helix REST API — Instances. 2 operations. Lead operation: Apache Helix List Instances. Self-contained
+    Naftiko capability covering one Apache Helix business surface.'
+  tags:
+  - Apache Helix
+  - Instances
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_HELIX_API_KEY: APACHE_HELIX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-instances
+    baseUri: http://localhost:9100
+    description: Apache Helix REST API — Instances business capability. Self-contained, no shared references.
+    resources:
+    - name: clusters-clusterId-instances
+      path: /clusters/{clusterId}/instances
+      operations:
+      - name: listinstances
+        method: GET
+        description: Apache Helix List Instances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: clusterId
+          in: path
+          type: string
+          required: true
+    - name: clusters-clusterId-instances-instanceName
+      path: /clusters/{clusterId}/instances/{instanceName}
+      operations:
+      - name: getinstance
+        method: GET
+        description: Apache Helix Get Instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: clusterId
+          in: path
+          type: string
+          required: true
+        - name: instanceName
+          in: path
+          type: string
+          description: Instance name (e.g. localhost_12913)
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-instances-rest
+    port: 8080
+    description: REST adapter for Apache Helix REST API — Instances. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/clusters/{clusterid}/instances
+      name: clusters-clusterid-instances
+      description: REST surface for clusters-clusterId-instances.
+      operations:
+      - method: GET
+        name: listinstances
+        description: Apache Helix List Instances
+        call: rest-instances.listinstances
+        with:
+          clusterId: rest.clusterId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/clusters/{clusterid}/instances/{instancename}
+      name: clusters-clusterid-instances-instancename
+      description: REST surface for clusters-clusterId-instances-instanceName.
+      operations:
+      - method: GET
+        name: getinstance
+        description: Apache Helix Get Instance
+        call: rest-instances.getinstance
+        with:
+          clusterId: rest.clusterId
+          instanceName: rest.instanceName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-instances-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Helix REST API — Instances. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-helix-list-instances
+      description: Apache Helix List Instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-instances.listinstances
+      with:
+        clusterId: tools.clusterId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-helix-get-instance
+      description: Apache Helix Get Instance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-instances.getinstance
+      with:
+        clusterId: tools.clusterId
+        instanceName: tools.instanceName
+      outputParameters:
+      - type: object
+        mapping: $.

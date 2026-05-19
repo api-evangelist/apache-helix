@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Helix REST API — Resources
+  description: 'Apache Helix REST API — Resources. 2 operations. Lead operation: Apache Helix List Resources. Self-contained
+    Naftiko capability covering one Apache Helix business surface.'
+  tags:
+  - Apache Helix
+  - Resources
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_HELIX_API_KEY: APACHE_HELIX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-resources
+    baseUri: http://localhost:9100
+    description: Apache Helix REST API — Resources business capability. Self-contained, no shared references.
+    resources:
+    - name: clusters-clusterId-resources
+      path: /clusters/{clusterId}/resources
+      operations:
+      - name: listresources
+        method: GET
+        description: Apache Helix List Resources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: clusterId
+          in: path
+          type: string
+          required: true
+    - name: clusters-clusterId-resources-resourceName
+      path: /clusters/{clusterId}/resources/{resourceName}
+      operations:
+      - name: getresource
+        method: GET
+        description: Apache Helix Get Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: clusterId
+          in: path
+          type: string
+          required: true
+        - name: resourceName
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-resources-rest
+    port: 8080
+    description: REST adapter for Apache Helix REST API — Resources. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/clusters/{clusterid}/resources
+      name: clusters-clusterid-resources
+      description: REST surface for clusters-clusterId-resources.
+      operations:
+      - method: GET
+        name: listresources
+        description: Apache Helix List Resources
+        call: rest-resources.listresources
+        with:
+          clusterId: rest.clusterId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/clusters/{clusterid}/resources/{resourcename}
+      name: clusters-clusterid-resources-resourcename
+      description: REST surface for clusters-clusterId-resources-resourceName.
+      operations:
+      - method: GET
+        name: getresource
+        description: Apache Helix Get Resource
+        call: rest-resources.getresource
+        with:
+          clusterId: rest.clusterId
+          resourceName: rest.resourceName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-resources-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Helix REST API — Resources. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-helix-list-resources
+      description: Apache Helix List Resources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-resources.listresources
+      with:
+        clusterId: tools.clusterId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-helix-get-resource
+      description: Apache Helix Get Resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-resources.getresource
+      with:
+        clusterId: tools.clusterId
+        resourceName: tools.resourceName
+      outputParameters:
+      - type: object
+        mapping: $.
