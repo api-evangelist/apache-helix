@@ -1,0 +1,234 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Helix REST API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix List Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters"
+          },
+          "docs": "List all Helix clusters managed by this controller."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Create Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9100/clusters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "Cluster name"
+              }
+            ]
+          },
+          "docs": "Get configuration and status of a specific Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Delete Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9100/clusters/:clusterId",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Helix cluster and all its associated ZooKeeper data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix List Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/instances",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all instances (participants) registered in a Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/instances/:instanceName",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceName",
+                "value": "",
+                "type": "path",
+                "description": "Instance name (e.g. localhost_12913)"
+              }
+            ]
+          },
+          "docs": "Get configuration and state of a specific Helix instance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix List Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all resources managed in a Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources/:resourceName",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get configuration and ideal state of a specific Helix resource."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "State",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix Get External View",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources/:resourceName/externalView",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the current external view showing actual partition state assignments across instances."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Ideal State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources/:resourceName/idealState",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the ideal state (desired partition placement) for a Helix resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
