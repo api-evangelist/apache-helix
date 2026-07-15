@@ -59,6 +59,8 @@ apis:
         url: https://search.maven.org/artifact/org.apache.helix/helix-core
         title: Java SDK (Maven Central)
 common:
+  - type: AgenticAccess
+    url: agentic-access/apache-helix-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/apache-helix-vulnerability-disclosure.yml
   - type: DomainSecurity
