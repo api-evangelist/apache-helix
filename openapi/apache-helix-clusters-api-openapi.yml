@@ -1,0 +1,121 @@
+openapi: 3.0.3
+info:
+  title: Apache Helix REST Clusters API
+  version: 1.0.0
+  description: REST API for managing Apache Helix clusters, instances, resources, and partition state assignments in distributed systems.
+  contact:
+    email: dev@helix.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:9100
+  description: Helix REST Service
+tags:
+- name: Clusters
+  description: Cluster management operations
+paths:
+  /clusters:
+    get:
+      operationId: listClusters
+      summary: Apache Helix List Clusters
+      description: List all Helix clusters managed by this controller.
+      tags:
+      - Clusters
+      responses:
+        '200':
+          description: Clusters listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusters:
+                    type: array
+                    items:
+                      type: string
+    post:
+      operationId: createCluster
+      summary: Apache Helix Create Cluster
+      description: Create a new Helix cluster.
+      tags:
+      - Clusters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cluster'
+      responses:
+        '201':
+          description: Cluster created
+        '400':
+          description: Invalid cluster configuration
+  /clusters/{clusterId}:
+    get:
+      operationId: getCluster
+      summary: Apache Helix Get Cluster
+      description: Get configuration and status of a specific Helix cluster.
+      tags:
+      - Clusters
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Cluster name
+      responses:
+        '200':
+          description: Cluster retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+        '404':
+          description: Cluster not found
+    delete:
+      operationId: deleteCluster
+      summary: Apache Helix Delete Cluster
+      description: Delete a Helix cluster and all its associated ZooKeeper data.
+      tags:
+      - Clusters
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cluster deleted
+        '404':
+          description: Cluster not found
+components:
+  schemas:
+    Cluster:
+      type: object
+      description: Helix cluster configuration and state
+      properties:
+        id:
+          type: string
+          description: Cluster name
+          example: my-cluster
+        controller:
+          type: string
+          description: Active controller node
+          example: controller_host_12345
+        paused:
+          type: boolean
+          description: Whether the cluster is paused
+          example: false
+        disabledInstances:
+          type: array
+          items:
+            type: string
+          description: List of disabled instances
+        liveInstances:
+          type: array
+          items:
+            type: string
+          description: List of live instances

@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: Apache Helix REST Clusters Instances API
+  version: 1.0.0
+  description: REST API for managing Apache Helix clusters, instances, resources, and partition state assignments in distributed systems.
+  contact:
+    email: dev@helix.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:9100
+  description: Helix REST Service
+tags:
+- name: Instances
+  description: Instance management operations
+paths:
+  /clusters/{clusterId}/instances:
+    get:
+      operationId: listInstances
+      summary: Apache Helix List Instances
+      description: List all instances (participants) registered in a Helix cluster.
+      tags:
+      - Instances
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Instances listed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instances:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Instance'
+  /clusters/{clusterId}/instances/{instanceName}:
+    get:
+      operationId: getInstance
+      summary: Apache Helix Get Instance
+      description: Get configuration and state of a specific Helix instance.
+      tags:
+      - Instances
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: instanceName
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Instance name (e.g. localhost_12913)
+      responses:
+        '200':
+          description: Instance retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Instance'
+        '404':
+          description: Instance not found
+components:
+  schemas:
+    Instance:
+      type: object
+      description: Helix cluster instance (participant) configuration
+      properties:
+        id:
+          type: string
+          description: Instance name
+          example: localhost_12913
+        hostName:
+          type: string
+          description: Hostname of the instance
+          example: localhost
+        port:
+          type: integer
+          description: Port number
+          example: 12913
+        enabled:
+          type: boolean
+          description: Whether the instance is enabled
+          example: true
+        tags:
+          type: array
+          items:
+            type: string
+          description: Instance tags

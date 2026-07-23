@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Apache Helix REST Clusters Resources API
+  version: 1.0.0
+  description: REST API for managing Apache Helix clusters, instances, resources, and partition state assignments in distributed systems.
+  contact:
+    email: dev@helix.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:9100
+  description: Helix REST Service
+tags:
+- name: Resources
+  description: Resource management operations
+paths:
+  /clusters/{clusterId}/resources:
+    get:
+      operationId: listResources
+      summary: Apache Helix List Resources
+      description: List all resources managed in a Helix cluster.
+      tags:
+      - Resources
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Resources listed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resources:
+                    type: array
+                    items:
+                      type: string
+  /clusters/{clusterId}/resources/{resourceName}:
+    get:
+      operationId: getResource
+      summary: Apache Helix Get Resource
+      description: Get configuration and ideal state of a specific Helix resource.
+      tags:
+      - Resources
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Resource retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+components:
+  schemas:
+    Resource:
+      type: object
+      description: Helix resource configuration
+      properties:
+        id:
+          type: string
+          description: Resource name
+          example: my-resource
+        stateModelDefRef:
+          type: string
+          description: State model definition reference
+          example: MasterSlave
+        numPartitions:
+          type: integer
+          description: Number of partitions
+          example: 16
+        replicas:
+          type: string
+          description: Replication factor
+          example: '3'
+        rebalanceMode:
+          type: string
+          description: Rebalance strategy
+          example: FULL_AUTO

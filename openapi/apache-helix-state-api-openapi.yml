@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Apache Helix REST Clusters State API
+  version: 1.0.0
+  description: REST API for managing Apache Helix clusters, instances, resources, and partition state assignments in distributed systems.
+  contact:
+    email: dev@helix.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:9100
+  description: Helix REST Service
+tags:
+- name: State
+  description: Partition state operations
+paths:
+  /clusters/{clusterId}/resources/{resourceName}/externalView:
+    get:
+      operationId: getExternalView
+      summary: Apache Helix Get External View
+      description: Get the current external view showing actual partition state assignments across instances.
+      tags:
+      - State
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: External view retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalView'
+  /clusters/{clusterId}/resources/{resourceName}/idealState:
+    get:
+      operationId: getIdealState
+      summary: Apache Helix Get Ideal State
+      description: Get the ideal state (desired partition placement) for a Helix resource.
+      tags:
+      - State
+      parameters:
+      - name: clusterId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Ideal state retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdealState'
+components:
+  schemas:
+    ExternalView:
+      type: object
+      description: Current external view showing actual partition states across instances
+      properties:
+        id:
+          type: string
+          description: Resource name
+          example: my-resource
+        mapFields:
+          type: object
+          description: Map of partition to instance state map
+    IdealState:
+      type: object
+      description: Desired ideal state for resource partition placement
+      properties:
+        id:
+          type: string
+          description: Resource name
+          example: my-resource
+        stateModelDefRef:
+          type: string
+          description: State model reference
+          example: MasterSlave
+        mapFields:
+          type: object
+          description: Map of partition to desired instance state map
