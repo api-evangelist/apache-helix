@@ -5,9 +5,21 @@ description: >-
   automates partition management, replication, fault tolerance, and cluster expansion for distributed systems, providing
   a REST API for cluster administration and a Java API for participant, spectator, and controller roles.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-helix.png
 tags:
   - Apache
   - Cluster Management
@@ -20,44 +32,86 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-helix/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: apache-helix:apache-helix-rest-api
-    name: Apache Helix REST API
-    description: >-
-      REST API for managing Apache Helix clusters, instances, resources, and partition state assignments, including
-      ideal state queries and external view inspection.
-    humanURL: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
-    baseURL: http://localhost:9100
-    tags:
-      - Cluster Management
-      - Instances
-      - Partitions
-      - REST
-      - Resources
-    properties:
-      - type: Documentation
-        url: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
-      - type: OpenAPI
-        url: openapi/apache-helix-rest-openapi.yml
-      - type: JSONSchema
-        url: json-schema/helix-rest-cluster-schema.json
-      - type: JSONLD
-        url: json-ld/apache-helix-rest-context.jsonld
-  - aid: apache-helix:apache-helix-java-api
-    name: Apache Helix Java API
-    description: >-
-      Java API for implementing Helix participant, spectator, and controller roles, with APIs for resource management,
-      task execution, and state machine definitions.
-    humanURL: https://helix.apache.org/0.9.9-docs/tutorial_participant.html
-    tags:
-      - Java
-      - SDK
-      - State Machine
-    properties:
-      - type: Documentation
-        url: https://helix.apache.org/0.9.9-docs/tutorial_participant.html
-      - type: SDKs
-        url: https://search.maven.org/artifact/org.apache.helix/helix-core
-        title: Java SDK (Maven Central)
+- aid: apache-helix:apache-helix-java-api
+  name: Apache Helix Java API
+  description: >-
+    Java API for implementing Helix participant, spectator, and controller roles, with APIs for resource
+    management, task execution, and state machine definitions.
+  humanURL: https://helix.apache.org/0.9.9-docs/tutorial_participant.html
+  tags:
+  - Java
+  - SDK
+  - State Machine
+  properties:
+  - type: Documentation
+    url: https://helix.apache.org/0.9.9-docs/tutorial_participant.html
+  - type: SDKs
+    url: https://search.maven.org/artifact/org.apache.helix/helix-core
+    title: Java SDK (Maven Central)
+- aid: apache-helix:apache-helix-clusters-api
+  name: Apache Helix Clusters API
+  description: Cluster management operations
+  humanURL: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  baseURL: http://localhost:9100
+  tags:
+  - Clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-helix-clusters-api-openapi.yml
+  - type: Documentation
+    url: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  - type: JSONSchema
+    url: json-schema/helix-rest-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/apache-helix-rest-context.jsonld
+- aid: apache-helix:apache-helix-instances-api
+  name: Apache Helix Instances API
+  description: Instance management operations
+  humanURL: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  baseURL: http://localhost:9100
+  tags:
+  - Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-helix-instances-api-openapi.yml
+  - type: Documentation
+    url: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  - type: JSONSchema
+    url: json-schema/helix-rest-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/apache-helix-rest-context.jsonld
+- aid: apache-helix:apache-helix-resources-api
+  name: Apache Helix Resources API
+  description: Resource management operations
+  humanURL: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  baseURL: http://localhost:9100
+  tags:
+  - Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-helix-resources-api-openapi.yml
+  - type: Documentation
+    url: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  - type: JSONSchema
+    url: json-schema/helix-rest-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/apache-helix-rest-context.jsonld
+- aid: apache-helix:apache-helix-state-api
+  name: Apache Helix State API
+  description: Partition state operations
+  humanURL: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  baseURL: http://localhost:9100
+  tags:
+  - State
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-helix-state-api-openapi.yml
+  - type: Documentation
+    url: https://helix.apache.org/0.9.9-docs/tutorial_admin.html
+  - type: JSONSchema
+    url: json-schema/helix-rest-cluster-schema.json
+  - type: JSONLD
+    url: json-ld/apache-helix-rest-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/apache-helix-agentic-access.yml
