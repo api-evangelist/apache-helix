@@ -1,0 +1,20 @@
+{
+  "provider": "apache-helix",
+  "sources": [
+    "apache-helix-clusters-api-openapi.yml",
+    "apache-helix-instances-api-openapi.yml",
+    "apache-helix-resources-api-openapi.yml",
+    "apache-helix-state-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-helix-clusters-api-openapi.yml",
+    "apache-helix-instances-api-openapi.yml",
+    "apache-helix-resources-api-openapi.yml",
+    "apache-helix-state-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
