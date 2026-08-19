@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Helix REST Clusters API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix List Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters"
+          },
+          "docs": "List all Helix clusters managed by this controller."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Create Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9100/clusters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path",
+                "description": "Cluster name"
+              }
+            ]
+          },
+          "docs": "Get configuration and status of a specific Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Delete Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9100/clusters/:clusterId",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Helix cluster and all its associated ZooKeeper data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

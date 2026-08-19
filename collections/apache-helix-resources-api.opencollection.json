@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Helix REST Clusters Resources API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix List Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all resources managed in a Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources/:resourceName",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get configuration and ideal state of a specific Helix resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

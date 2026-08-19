@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Helix REST Clusters Instances API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix List Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/instances",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all instances (participants) registered in a Helix cluster."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/instances/:instanceName",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "instanceName",
+                "value": "",
+                "type": "path",
+                "description": "Instance name (e.g. localhost_12913)"
+              }
+            ]
+          },
+          "docs": "Get configuration and state of a specific Helix instance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Helix REST Clusters State API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "State",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Helix Get External View",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources/:resourceName/externalView",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the current external view showing actual partition state assignments across instances."
+        },
+        {
+          "info": {
+            "name": "Apache Helix Get Ideal State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9100/clusters/:clusterId/resources/:resourceName/idealState",
+            "params": [
+              {
+                "name": "clusterId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the ideal state (desired partition placement) for a Helix resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
