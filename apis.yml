@@ -5,6 +5,19 @@ description: >-
   automates partition management, replication, fault tolerance, and cluster expansion for distributed systems, providing
   a REST API for cluster administration and a Java API for participant, spectator, and controller roles.
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
