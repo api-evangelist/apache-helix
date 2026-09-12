@@ -137,6 +137,8 @@ apis:
   - type: JSONLD
     url: json-ld/apache-helix-rest-context.jsonld
 common:
+  - type: Website
+    url: https://www.apache.org/
   - type: IssueTracker
     url: https://github.com/apache/helix/issues
   - type: Releases
