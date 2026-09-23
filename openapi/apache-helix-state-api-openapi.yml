@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Apache Helix REST Clusters State API
+  title: Apache Helix REST State API
   version: 1.0.0
   description: REST API for managing Apache Helix clusters, instances, resources, and partition state assignments in distributed systems.
   contact:
@@ -67,17 +67,6 @@ paths:
                 $ref: '#/components/schemas/IdealState'
 components:
   schemas:
-    ExternalView:
-      type: object
-      description: Current external view showing actual partition states across instances
-      properties:
-        id:
-          type: string
-          description: Resource name
-          example: my-resource
-        mapFields:
-          type: object
-          description: Map of partition to instance state map
     IdealState:
       type: object
       description: Desired ideal state for resource partition placement
@@ -93,3 +82,14 @@ components:
         mapFields:
           type: object
           description: Map of partition to desired instance state map
+    ExternalView:
+      type: object
+      description: Current external view showing actual partition states across instances
+      properties:
+        id:
+          type: string
+          description: Resource name
+          example: my-resource
+        mapFields:
+          type: object
+          description: Map of partition to instance state map
