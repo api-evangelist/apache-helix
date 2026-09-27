@@ -67,6 +67,17 @@ paths:
                 $ref: '#/components/schemas/IdealState'
 components:
   schemas:
+    ExternalView:
+      type: object
+      description: Current external view showing actual partition states across instances
+      properties:
+        id:
+          type: string
+          description: Resource name
+          example: my-resource
+        mapFields:
+          type: object
+          description: Map of partition to instance state map
     IdealState:
       type: object
       description: Desired ideal state for resource partition placement
@@ -82,14 +93,3 @@ components:
         mapFields:
           type: object
           description: Map of partition to desired instance state map
-    ExternalView:
-      type: object
-      description: Current external view showing actual partition states across instances
-      properties:
-        id:
-          type: string
-          description: Resource name
-          example: my-resource
-        mapFields:
-          type: object
-          description: Map of partition to instance state map

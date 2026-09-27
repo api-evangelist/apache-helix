@@ -37,7 +37,7 @@ tags:
   - Apache
   - Cluster Management
   - Distributed Systems
-  - Open-Source
+  - Open Source
   - Partitioning
   - Replication
 tags_raw:
@@ -47,6 +47,7 @@ tags_raw:
   - Open Source
   - Partitioning
   - Replication
+  - Open-Source
 created: '2026-03-16'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-helix/refs/heads/main/apis.yml
